@@ -19,6 +19,7 @@ File > Open Projects from File System... > Directory...
 # Pratique (2048)
 
 ### Backlog
+
 Id | En tant que... | Je veux... | Afin de... | Valeur | Complexité (1/2h)
 1 | Joueur | voir le terrain | choisir une action | 100 | 1
 2 | Joueur | différencier les briques facilement | me faciliter la prise de décision | 100 | 2
@@ -43,6 +44,7 @@ Id | En tant que... | Je veux... | Afin de... | Valeur | Complexité (1/2h)
 21 | Joueur | Sauvegarder ma progression | Pouvoir reprendre plus tard si j'ai un haut score | 50 | 1
 
 ### Sprint 1 
+
 User story | Temps (1/2h) | Realisé ?
 --- | ---
 1 | 1 | Y
