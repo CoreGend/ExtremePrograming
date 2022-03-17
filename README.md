@@ -15,69 +15,45 @@ Pour importer le projet :
 ```
 File > Open Projects from File System... > Directory...
 ```
-## Pratique (POKER)
+
+# Pratique (2048)
 
 ### Backlog
+Id | En tant que... | Je veux... | Afin de... | Valeur | Complexité (1/2h)
+1 | Joueur | voir le terrain | choisir une action | 100 | 1
+2 | Joueur | différencier les briques facilement | me faciliter la prise de décision | 100 | 2
+3 | Joueur | interagir avec le jeu | avoir une expérience intéressante | 100 | 1
+4 | Joueur | pouvoir bouger mes briques | faire progresser le jeu | 100 | 1
+5 | Joueur | faire fusionner les briques | Augmenter mon score | 100 | 1
+6 | Joueur | savoir comment interagir | pouvoir jouer | 10 | 2
+7 | Joueur | paramétrer les touches | personnaliser l'UX | 20 | 3
+8 | Joueur | pouvoir revenir en arrière | corriger une erreur | 70 | 1
+9 | Joueur | que des briques soient générées | que le jeu progresse | 100 | 1
+10 | Joueur | terminer la partie | valider mon score | 100 | 1
+11 | joueur | reprendre la partie | pouvoir aller dans les paramètres sans perdre ma partie | 50 | 1
+12 | joueur | voir mon score | essayer de l'améliorer | 90 | 1
+13 | Joueur | partager mon score | pouvoir défier mes amis | 10 | 1
+14 | Annonceur | Être promu | Obtenir de la visibilité | 20 | 3
+15 | Joueur | Un mode nuit | Améliorer mon expérience lorsque je joue dans un environnement peu éclairé | 30 | 2
+16 | Joueur | Disposer de plusieurs modes de jeu | Varier mon UX | 20 | 1
+17 | Joueur | Avoir de la musique et du son | Bénéficier d'une expérience multisensorielle | 10 | 5
+18 | Joueur | Des animations fluides | Que le jeu soit agréable à regarder | 20 | 3
+19 | Joueur | Des performances correctes | Que le jeu soit agréable à jouer | 70 | 2
+20 | Joueur | Que le jeu me récompense pour certains paliers | Me motiver à jouer davantage | 50 | 1
+21 | Joueur | Sauvegarder ma progression | Pouvoir reprendre plus tard si j'ai un haut score | 50 | 1
 
-Id | En tant que... | Je veux... | Afin de... | Valeur | O(n) (h)
---- | --- | --- | --- | --- | ---
-1 | Joueur | initialiser une partie | commencer à jouer | 100 | 2
-2 | Joueur | choisir le nombre de joueurs | initialiser la partie | 100 | 1/2
-3 | Joueur | choisir le nom des joueurs | initialiser la partie | 50 | 1
-4 | Joueur | recevoir 2 cartes en début de tour | constituer ma main | 100 | 1
-5 | Joueur | terminer ma partie au bout d'un certain nombre de tours | limiter le temps de jeux | 50 | 1/2
-6 | Joueur | découvrir les cartes sur la table | connaître ma combinaison | 70 | 1/2
-7 | Joueur | être exclu si je n'ai plus d'argent | réduire le nombre de joueurs | 80 | 1/2
-8 | Joueur | miser | augmenter les gains du tour | 80 | 1/2
-9 | Joueur | suivre (miser le minimum pour continuer) | augmenter la somme en jeu | 80 | 1/2
-10 | Joueur | faire tapis (miser tout mon argent) | augmenter la somme en jeu | 80 | 1/2
-11 | Joueur | relancer (surenchérir) | augmenter la somme en jeu | 80 | 1/2
-12 | Joueur | passer | voir les autres mises | 80 | 1/2
-13 | Joueur | voir ma mise actuelle | décider de mon annonce | 80 | 1/2
-14 | Joueur | jouer après le joueur à ma droite | effectuer une action | 70 | 1
-15 | Joueur | voir seulement mes cartes | décider de mon annonce | 100 | 1
-16 | Joueur | voir la somme qui me reste | décider des mises | 80 | 1/2
-17 | Joueur / Spectateur | savoir quel joueur a gagné le tour | savoir la répartition des gains | 70 | 2
-18 | Joueur / Spectateur | voir la somme en jeu | connaître l'objectif | 50 | 1/2
-19 | Spectateur | découvrir les cartes sur la table | suivre le déroulement de la partie | 20 | 1/2
-20 | Spectateur | voir l'argent de tous les joueurs | suivre le déroulement de la partie | 20 | 1/2
-21 | Spectateur | voir les cartes de tous les joueurs | suivre le déroulement de la partie | 20 | 1/2
-22 | Croupier | le joueur à ma gauche mise la petite blind | initialiser le tour | 90 | 1/2
-23 | Croupier | le deuxième joueur à ma gauche mise la grande blind | initialiser le tour | 90 | 1/2
-24 | Croupier | le troisième joueur à ma gauche commence le tour | initialiser le tour | 90 | 1/2
-25 | Croupier | le joueur à ma gauche soit le prochain croupier | initialiser le prochain tour | 90 | 1/2
-
-### Sprint 1
-
-User story | Temps (h)
+### Sprint 1 
+User story | Temps (1/2h) | Realisé ?
 --- | ---
-1 | 2
-4 | 1
-8 | 1/2
-9 | 1/2
-10 | 1/2
-11 | 1/2
-12 | 1/2
-13 | 1/2
-15 | 1
-**Total** | **7**
-
-### Sprint 2
-
-User story | Temps (h)
---- | ---
-2 | 1/2
-7 | 1/2
-14 | 1
-16 | 1/2
-17 | 2
-18 | 1/2
-22 | 1/2
-23 | 1/2
-24 | 1/2
-25 | 1/2
-**Total** | **7**
-
+1 | 1 | Y
+3 | 1 | Y
+4 | 1 | En cours
+5 | 1 | 
+8 | 1 | 
+9 | 1 | 
+10 | 1 | 
+12 | 1 | 
+**Total** | **8**
 
 ## Aide
 
