@@ -53,7 +53,7 @@ User story | Temps (1/2h) | Realisé ?
 4 | 1 | Y
 5 | 1 | En cours
 8 | 1 | 
-9 | 1 | 
+9 | 1 | Y
 10 | 1 | 
 12 | 1 | 
 **Total** | **8**
