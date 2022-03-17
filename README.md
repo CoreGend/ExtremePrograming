@@ -51,10 +51,10 @@ User story | Temps (1/2h) | Realisé ?
 1 | 1 | Y
 3 | 1 | Y
 4 | 1 | Y
-5 | 1 | En cours
+5 | 1 | Y
 8 | 1 | 
 9 | 1 | Y
-10 | 1 | 
+10 | 1 | En cours
 12 | 1 | 
 **Total** | **8**
 

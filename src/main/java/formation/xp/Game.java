@@ -11,93 +11,174 @@ public class Game {
 	public void setBoard(Board board) { this.board = board; }
 	public Board getBoard() { return this.board; }
 	
+	/**
+	 * Classe contenant le tableau des valeurs et une mémoire des cases fusionnées
+	 */
+	public class InterTable { 
+		int[][] intTable;
+		boolean[][] boolTable;
+		public InterTable(int[][] intTable, boolean[][] boolTable) {
+			this.intTable = intTable;
+			this.boolTable = boolTable;
+		}
+	}
+	
 	public Game init() {
 		board = new Board();
 		return this;
 	}
 	
+	
 	public void run() {
 		String dir = null;
+		boolean change = false;
 		
 		// boolean done;
 		int count = 0;
 		do {
+			generatePiece();
 			System.out.println("");
 			board.print();
 			System.out.println("Indiquer la direction");
-			dir = Input.BoardInput();
-			move(dir);
-			
-			
+			do {
+				dir = Input.BoardInput();
+				change = move(dir);
+				System.out.println(change);
+			}while(!change);
+
 			count++;
-		}while(count < 10);
+		}while(count < 16);
 	}
 	
-	private int[][] localMoveRight(int[][] values, int size, int i, int j) {
+	private InterTable localMoveRight(InterTable tables, int size, int i, int j) {
+		int[][] values = tables.intTable;
+		boolean[][] merged = tables.boolTable;
+		
 		if(j<size-1 && values[i][j+1] == 0) {
 			values[i][j+1] = values[i][j];
 			values[i][j] = 0;
-			return localMoveRight(values, size, i, j+1);
+
+			merged[i][j+1] = merged[i][j];
+			merged[i][j] = false;
+			
+			tables.intTable = values;
+			return localMoveRight(tables, size, i, j+1);
+		} else if (j<size-1) {
+			tables = mergeTile(tables, i, j+1, i, j);
+			return localMoveLeft(tables, i, j+1);
 		} else {
-			return values;
+			return tables;
 		}
 	}
 	
-	private int[][] localMoveLeft(int[][] values, int i, int j){
+	private InterTable localMoveLeft(InterTable tables, int i, int j){
+		int[][] values = tables.intTable;
+		boolean[][] merged = tables.boolTable;
+		
 		if(j>0 && values[i][j-1] == 0) {
 			values[i][j-1] = values[i][j];
 			values[i][j] = 0;
-			return localMoveLeft(values, i, j-1);
+
+			merged[i][j-1] = merged[i][j];
+			merged[i][j] = false;
+			
+			tables.intTable = values;
+			return localMoveLeft(tables, i, j-1);
+		} else if (j>0) {
+			tables = mergeTile(tables, i, j-1, i, j);
+			return localMoveLeft(tables, i, j-1);
 		} else {
-			return values;
+			return tables;
 		}
 	}
 	
-	private int[][] localMoveUp(int[][] values, int i, int j){
+	private InterTable localMoveUp(InterTable tables, int i, int j){
+		int[][] values = tables.intTable;
+		boolean[][] merged = tables.boolTable;
+
 		if(i>0 && values[i-1][j] == 0) {
 			values[i-1][j] = values[i][j];
 			values[i][j] = 0;
-			return localMoveUp(values, i-1, j);
+			
+			merged[i-1][j] = merged[i][j];
+			merged[i][j] = false;
+			
+			tables.intTable = values;
+			return localMoveUp(tables, i-1, j);
+		} else if (i>0) {
+			tables = mergeTile(tables, i-1, j, i, j);
+			return localMoveUp(tables, i-1, j);
 		} else {
-			return values;
+			return tables;
 		}
 	}
 	
-	private int[][] localMoveDown(int[][] values, int size, int i, int j){
+	private InterTable localMoveDown(InterTable tables, int size, int i, int j){
+		int[][] values = tables.intTable;
+		boolean[][] merged = tables.boolTable;
+		
 		if(i<size-1 && values[i+1][j] == 0) {
 			values[i+1][j] = values[i][j];
 			values[i][j] = 0;
-			return localMoveDown(values, size, i+1, j);
+			
+			merged[i+1][j] = merged[i][j];
+			merged[i][j] = false;
+			
+			tables.intTable = values;
+			tables.boolTable = merged;
+			return localMoveDown(tables, size, i+1, j);
+		} else if (i<size-1) {
+			tables = mergeTile(tables, i+1, j, i, j);
+			return localMoveDown(tables, size, i+1, j);
 		} else {
-			return values;
+			return tables;
 		}
 	}
 	
-	public void move(String dir) {
+	public boolean move(String dir) {
 		int size = board.getSize();
+		boolean[][] merged = new boolean[size][size];
+		int[][] previousTable = new int[size][size];
+		
 		int[][] values = board.getBoard();
-		boolean mov = false;
+
 		for(int i=0; i<size; i++) {
 			for(int j=0; j<size; j++) {
-				do {
-					mov = false;
-					if(dir.equals("up")) {
-						values = localMoveUp(values, i, j);
-					} else if(dir.equals("down")) {
-						values = localMoveDown(values, size, size-1-i, j); // dernier rang indexé 'size-1'
-					} else if(dir.equals("left")) {
-						values = localMoveLeft(values, i, j);
-					} else if(dir.equals("right")) {
-						values = localMoveRight(values, size, i, size-1-j);
-					}
-				}while(mov);
+				merged[i][j]=false;
+				previousTable[i][j] = values[i][j];
 			}
 		}
-		for(int i=0; i<4; i++) {
-			for(int j=0; j<4; j++) {
-				board.putNumber(values[i][j],i,j);
+		
+		InterTable tables = new InterTable(values, merged);
+		for(int i=0; i<size; i++) {
+			for(int j=0; j<size; j++) {
+				if(dir.equals("up")) {
+					tables = localMoveUp(tables, i, j);
+				} else if(dir.equals("down")) {
+					tables = localMoveDown(tables, size, size-1-i, j); // dernier rang indexé 'size-1'
+				} else if(dir.equals("left")) {
+					tables = localMoveLeft(tables, i, j);
+				} else if(dir.equals("right")) {
+					tables = localMoveRight(tables, size, i, size-1-j);
+				}
 			}
 		}
+		
+		for(int i=0; i<size; i++) {
+			for(int j=0; j<size; j++) {
+				board.putNumber(tables.intTable[i][j],i,j);
+			}
+		}
+		
+		boolean change = false;
+		for(int i=0; i<size; i++) {
+			for(int j=0; j<size; j++) {
+				if(previousTable[i][j] != tables.intTable[i][j]) {
+					change = true;
+				}
+			}
+		}
+		return change;
 	}
 	
 	public class Coord{ 
@@ -144,5 +225,20 @@ public class Game {
 		if (Math.random() > 0.80) { newValue = 4; }
 	
 		board.putNumber(newValue, c.x, c.y);
+	}
+	
+	public InterTable mergeTile(InterTable tables, int x1, int y1, int x2, int y2) {
+		int[][] values = tables.intTable;
+		boolean[][] merged = tables.boolTable;
+		
+		if(!merged[x1][y1] && !merged[x2][y2] && values[x1][y1] == values[x2][y2]) {
+			values[x1][y1] += values[x2][y2];
+			values[x2][y2] = 0;
+			merged[x1][y1] = true;
+		}
+		
+		tables.intTable = values;
+		tables.boolTable = merged;
+		return tables;
 	}
 }
