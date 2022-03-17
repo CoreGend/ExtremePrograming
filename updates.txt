@@ -1,0 +1,20 @@
+17/03/2022 :
+- correction de la fonction de déplacement
+- ajout de la génération des pièces
+
+Notes : 
+J'ai créé des fonctions localMove pour simplifier la lecture
+et faire une récursion facile
+J'ai fait en sorte que la taille ne soit pas hardcodée mais
+mise en argument pour permettre - plus tard - à l'utilisateur
+de choisir la taille qu'il veut pour sa grille
+
+Pistes d'améliorations imaginées :
+- Faire varier la probabilité d'avoir un 4 selon le score (ajd
+hardcodée à 20% fixe d'avoir un 4, mais au début il y en a pas
+et ils apparaissent au bout d'un certain temps)
+- peut être mettre des protected dans les classes (au lieu de 
+public) pour les fonctions qui devraient être privées mais qu'on
+veut tester - et on dit que la classe de tests implémente
+la classe (pour qu'elle hérite du droit de vue sur les classes
+protégées)
