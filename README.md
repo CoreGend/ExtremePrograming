@@ -21,6 +21,7 @@ File > Open Projects from File System... > Directory...
 ### Backlog
 
 Id | En tant que... | Je veux... | Afin de... | Valeur | Complexité (1/2h)
+--- | --- | --- | --- | --- | ---
 1 | Joueur | voir le terrain | choisir une action | 100 | 1
 2 | Joueur | différencier les briques facilement | me faciliter la prise de décision | 100 | 2
 3 | Joueur | interagir avec le jeu | avoir une expérience intéressante | 100 | 1
@@ -46,7 +47,7 @@ Id | En tant que... | Je veux... | Afin de... | Valeur | Complexité (1/2h)
 ### Sprint 1 
 
 User story | Temps (1/2h) | Realisé ?
---- | ---
+--- | --- | ---
 1 | 1 | Y
 3 | 1 | Y
 4 | 1 | En cours
