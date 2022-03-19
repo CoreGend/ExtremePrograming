@@ -9,6 +9,21 @@ import formation.xp.Game.Coord;
 import formation.xp.Game.InterTable;
 
 public class GameTest {
+
+
+	/**
+	 * Teste si le board est bien créé lors de la création du jeu
+	 */
+	@Test
+	public void gameBoardTest(){
+		Game game = new Game();
+		game.init();
+
+		Assertions.assertNotNull(game.getBoard());
+
+	}
+
+
 	/**
 	 * Teste le bon fonctionnement des mouvements
 	 */
@@ -21,34 +36,36 @@ public class GameTest {
 		b.putNumber(2, 1, 2);
 		game.setBoard(b);
 		
-		Assertions.assertEquals(b.getBoard()[1][2], 2);
+		Assertions.assertEquals(2, b.getBoard()[1][2]);
 		
 		game.move("up");
-		Assertions.assertEquals(b.getBoard()[0][2], 2);
-		Assertions.assertEquals(b.getBoard()[1][2], 0);
+		Assertions.assertEquals(2, b.getBoard()[0][2]);
+		Assertions.assertEquals(0, b.getBoard()[1][2]);
 		
 		game.move("down");
-		Assertions.assertEquals(b.getBoard()[3][2], 2);
-		Assertions.assertEquals(b.getBoard()[0][2], 0);
+		Assertions.assertEquals(2, b.getBoard()[3][2]);
+		Assertions.assertEquals(0, b.getBoard()[0][2]);
 		
 		game.move("right");
-		Assertions.assertEquals(b.getBoard()[3][3], 2);
-		Assertions.assertEquals(b.getBoard()[3][2], 0);
+		Assertions.assertEquals(2, b.getBoard()[3][3]);
+		Assertions.assertEquals(0, b.getBoard()[3][2]);
 		
 		game.move("left");
-		Assertions.assertEquals(b.getBoard()[3][0], 2);
-		Assertions.assertEquals(b.getBoard()[3][3], 0);
+		Assertions.assertEquals(2, b.getBoard()[3][0]);
+		Assertions.assertEquals(0, b.getBoard()[3][3]);
 
 		game.move("up");
-		Assertions.assertEquals(b.getBoard()[0][0], 2);
-		Assertions.assertEquals(b.getBoard()[3][0], 0);
+		Assertions.assertEquals(2, b.getBoard()[0][0]);
+		Assertions.assertEquals(0, b.getBoard()[3][0]);
 	}
 	
 	/**
 	 * Teste le bon fonctionnement du calcul des places libres
 	 */
+	@Test
 	public void testOpenPlaces() {
 		Game game = new Game();
+		game.init();
 		
 		int[][] values = new int[4][4];
 		
@@ -61,23 +78,27 @@ public class GameTest {
 		List<Coord> openPlace;
 		openPlace = game.openPlaces(values);
 		
-		Assertions.assertEquals(openPlace.size(), 0);
+		Assertions.assertEquals(0, openPlace.size());
 		
 		values[1][2] = 0;
 		values[3][1] = 0;
+
+		openPlace = game.openPlaces(values);
 		
-		Assertions.assertEquals(openPlace.size(), 2);
-		Assertions.assertEquals(openPlace.get(0).x, 1);
-		Assertions.assertEquals(openPlace.get(0).y, 2);
-		Assertions.assertEquals(openPlace.get(1).x, 3);
-		Assertions.assertEquals(openPlace.get(1).y, 1);
+		Assertions.assertEquals(2, openPlace.size());
+		Assertions.assertEquals( 1, openPlace.get(0).x);
+		Assertions.assertEquals(2, openPlace.get(0).y);
+		Assertions.assertEquals(3, openPlace.get(1).x);
+		Assertions.assertEquals(1, openPlace.get(1).y);
 	}
 	
 	/**
 	 * Teste la génération des pièces
 	 */
+	@Test
 	public void testPieceGeneration() {
 		Game game = new Game();
+		game.init();
 		
 		for(int i=0; i<4; i++) {
 			for(int j=0; j<4; j++) {
@@ -85,15 +106,15 @@ public class GameTest {
 			}
 		}
 
-		Assertions.assertEquals(game.getBoard().getBoard()[1][2], 16);
+		Assertions.assertEquals(16, game.getBoard().getBoard()[1][2]);
 		
 		game.getBoard().putNumber(0, 1, 2);
 		
-		Assertions.assertEquals(game.getBoard().getBoard()[1][2], 0);
+		Assertions.assertEquals(0, game.getBoard().getBoard()[1][2]);
 		
 		game.generatePiece();
 		
-		Assertions.assertNotEquals(game.getBoard().getBoard()[1][2], 0);
+		Assertions.assertNotEquals(0, game.getBoard().getBoard()[1][2]);
 	}
 	
 	/**
@@ -121,8 +142,8 @@ public class GameTest {
 		InterTable tables = game.new InterTable(values, merged);
 		tables = game.mergeTile(tables, 0, 0, 0, 1);
 		
-		Assertions.assertEquals(tables.intTable[0][0], 4);
-		Assertions.assertEquals(tables.intTable[0][1], 0);
+		Assertions.assertEquals(4, tables.intTable[0][0]);
+		Assertions.assertEquals(0, tables.intTable[0][1]);
 		Assertions.assertTrue(tables.boolTable[0][0]);
 		Assertions.assertFalse(tables.boolTable[0][1]);
 		
@@ -131,16 +152,16 @@ public class GameTest {
 		tables.intTable[1][0] = 2;
 		tables = game.mergeTile(tables, 1, 0, 0, 0);
 		
-		Assertions.assertEquals(tables.intTable[0][0], 4);
-		Assertions.assertEquals(tables.intTable[1][0], 2);
+		Assertions.assertEquals(4, tables.intTable[0][0]);
+		Assertions.assertEquals(2, tables.intTable[1][0]);
 		Assertions.assertTrue(tables.boolTable[0][0]);
 		Assertions.assertFalse(tables.boolTable[1][0]);
 		
 		// cas où c'est la case fusionnée qui essaie de fusionner, valeurs diff
 		tables = game.mergeTile(tables, 0, 0, 1, 0);
 		
-		Assertions.assertEquals(tables.intTable[0][0], 4);
-		Assertions.assertEquals(tables.intTable[1][0], 2);
+		Assertions.assertEquals(4, tables.intTable[0][0]);
+		Assertions.assertEquals(2, tables.intTable[1][0]);
 		Assertions.assertTrue(tables.boolTable[0][0]);
 		Assertions.assertFalse(tables.boolTable[1][0]);
 		
@@ -148,16 +169,16 @@ public class GameTest {
 		tables.intTable[1][0] = 4;
 		tables = game.mergeTile(tables, 1, 0, 0, 0);
 				
-		Assertions.assertEquals(tables.intTable[0][0], 4);
-		Assertions.assertEquals(tables.intTable[1][0], 4);
+		Assertions.assertEquals(4, tables.intTable[0][0]);
+		Assertions.assertEquals(4, tables.intTable[1][0]);
 		Assertions.assertTrue(tables.boolTable[0][0]);
 		Assertions.assertFalse(tables.boolTable[1][0]);
 				
 		// cas où c'est la case fusionnée qui essaie de fusionner, valeurs égales
 		tables = game.mergeTile(tables, 0, 0, 1, 0);
 				
-		Assertions.assertEquals(tables.intTable[0][0], 4);
-		Assertions.assertEquals(tables.intTable[1][0], 4);
+		Assertions.assertEquals(4, tables.intTable[0][0]);
+		Assertions.assertEquals(4, tables.intTable[1][0]);
 		Assertions.assertTrue(tables.boolTable[0][0]);
 		Assertions.assertFalse(tables.boolTable[1][0]);
 	}

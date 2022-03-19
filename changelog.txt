@@ -1,4 +1,4 @@
-17/03/2022 :
+17/03/2022 : (Corentin)
 - correction de la fonction de déplacement
 - ajout de la génération des pièces
 - ajout de la fonction de fusion
@@ -22,3 +22,20 @@ protégées)
 
 A faire :
 - tests de vrai mouvements (pas que merge et move séparés)
+
+
+19/03/2022 : (Nicolas)
+- Ajout de l'affichage graphique
+- Correction de l'ordre des param dans les tests
+- Correction des tests testOpenPlace (oubli d'appel d'une fonction après modification d'un param de test) et un autre où il manquait l'init de la game
+
+Notes :
+L'affichage est hardcodé en 4*4, il faudra mettre la variable correspondante
+Ce n'est qu'une version théorique car non testée
+Je n'arrive pas à faire tourner le projet (des tests échouent entre autres :/ )
+
+Pistes d'amélioration :
+
+A faire :
+-Intégrer l'affichage directement dans Run, ou en faire une fonction statique
+-Tester l'affichage
