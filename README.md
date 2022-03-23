@@ -15,6 +15,7 @@ Pour importer le projet :
 ```
 File > Open Projects from File System... > Directory...
 ```
+Note : Pour l'affichage du jeu, il est nécessaire de configurer le terminal / l'IDE en UTF-8.
 
 # Pratique (2048)
 
