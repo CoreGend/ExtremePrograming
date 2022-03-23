@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Game {
 	private Board board;
+	private Display display;
 	
 	public Game() {}
 	
@@ -12,7 +13,7 @@ public class Game {
 	public Board getBoard() { return this.board; }
 	
 	/**
-	 * Classe contenant le tableau des valeurs et une mémoire des cases fusionnées
+	 * Classe contenant le tableau des valeurs et une mï¿½moire des cases fusionnï¿½es
 	 */
 	public class InterTable { 
 		int[][] intTable;
@@ -25,6 +26,8 @@ public class Game {
 	
 	public Game init() {
 		board = new Board();
+		display = new Display();
+		display.setBoard(board);
 		return this;
 	}
 	
@@ -32,13 +35,17 @@ public class Game {
 	public void run() {
 		String dir = null;
 		boolean change = false;
+
+
 		
 		// boolean done;
 		int count = 0;
 		do {
 			generatePiece();
 			System.out.println("");
-			board.print();
+//			board.print();
+			display.setBoard(board);
+			System.out.println(display.tableToString());
 			System.out.println("Indiquer la direction");
 			do {
 				dir = Input.BoardInput();
@@ -56,7 +63,7 @@ public class Game {
 
 
 		if(j<size-1 && values[i][j+1] == 0) {
-			//Cas ou la case à droite est libre et existe
+			//Cas ou la case ï¿½ droite est libre et existe
 			values[i][j+1] = values[i][j];
 			values[i][j] = 0;
 
@@ -66,13 +73,13 @@ public class Game {
 			tables.intTable = values;
 			return localMoveRight(tables, size, i, j+1);
 		} else if (j<size-1) {
-			//Cas où la case de droite existe mais n'est pas libre
+			//Cas oï¿½ la case de droite existe mais n'est pas libre
 			tables = mergeTile(tables, i, j+1, i, j);
 //			On merge la case avec celle de droite
-			return localMoveLeft(tables, i, j+1);
-//			Fin de la récursion
+			return localMoveRight(tables, size, i, j+1);
+//			Fin de la rï¿½cursion
 		} else {
-			//Cas où la case de droite n'existe pas
+			//Cas oï¿½ la case de droite n'existe pas
 			return tables;
 		}
 	}
@@ -152,7 +159,7 @@ public class Game {
 		for(int i=0; i<size; i++) {
 			for(int j=0; j<size; j++) {
 				merged[i][j]=false;
-				//		Réinitialisation du tableau des merge
+				//		Rï¿½initialisation du tableau des merge
 				previousTable[i][j] = values[i][j];
 				//Sauvegarde
 			}
@@ -164,7 +171,7 @@ public class Game {
 				if(dir.equals("up")) {
 					tables = localMoveUp(tables, i, j);
 				} else if(dir.equals("down")) {
-					tables = localMoveDown(tables, size, size-1-i, j); // dernier rang indexé 'size-1'
+					tables = localMoveDown(tables, size, size-1-i, j); // dernier rang indexï¿½ 'size-1'
 				} else if(dir.equals("left")) {
 					tables = localMoveLeft(tables, i, j);
 				} else if(dir.equals("right")) {
@@ -217,8 +224,8 @@ public class Game {
 	}
 	
 	/**
-	 * Génère une pièce aléatoire
-	 * Présupposé : il y a une place de libre (fonction checkPlace appelée avant)
+	 * Gï¿½nï¿½re une piï¿½ce alï¿½atoire
+	 * Prï¿½supposï¿½ : il y a une place de libre (fonction checkPlace appelï¿½e avant)
 	 */
 	public void generatePiece() {
 		int[][] values = board.getBoard();
@@ -241,8 +248,8 @@ public class Game {
 		boolean[][] merged = tables.boolTable;
 		
 		if(!merged[x1][y1] && !merged[x2][y2] && values[x1][y1] == values[x2][y2]) {
-//			la tableau merged vérifie si une case a déjà été merged durant le tour. Si oui, elle ne peut pas merge une seconde fois.
-//			Les deux cases doivent être identiques
+//			la tableau merged vï¿½rifie si une case a dï¿½jï¿½ ï¿½tï¿½ merged durant le tour. Si oui, elle ne peut pas merge une seconde fois.
+//			Les deux cases doivent ï¿½tre identiques
 			values[x1][y1] += values[x2][y2];
 			values[x2][y2] = 0;
 			merged[x1][y1] = true;

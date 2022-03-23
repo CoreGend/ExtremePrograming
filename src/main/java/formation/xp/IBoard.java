@@ -11,5 +11,6 @@ public interface IBoard {
 	void print();
 	
 	void putNumber(int value, int x, int y);
+
 }
 

@@ -4,7 +4,8 @@ public class Board implements IBoard {
 	
 	private int size = 4;
 	private int[][] board;
-	
+
+
 	public int getSize() {
 		return this.size;
 	}
@@ -31,6 +32,8 @@ public class Board implements IBoard {
 			}
 			System.out.println(" ]");
 		}
+
+
 	}
 	
 	public void putNumber(int value, int x, int y) {

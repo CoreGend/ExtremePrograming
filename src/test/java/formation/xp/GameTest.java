@@ -12,7 +12,7 @@ public class GameTest {
 
 
 	/**
-	 * Teste si le board est bien créé lors de la création du jeu
+	 * Teste si le board est bien crÃ©Ã© lors de la crÃ©ation du jeu
 	 */
 	@Test
 	public void gameBoardTest(){
@@ -93,7 +93,7 @@ public class GameTest {
 	}
 	
 	/**
-	 * Teste la génération des pièces
+	 * Teste la gÃ©nÃ©ration des piÃ¨ces
 	 */
 	@Test
 	public void testPieceGeneration() {
@@ -125,7 +125,7 @@ public class GameTest {
 		Game game = new Game();
 		game.init();
 		
-		// fusion devant réussir
+		// fusion devant rÃ©ussir
 		int[][] values = game.getBoard().getBoard();
 		
 		values[0][0] = 2;
@@ -147,8 +147,8 @@ public class GameTest {
 		Assertions.assertTrue(tables.boolTable[0][0]);
 		Assertions.assertFalse(tables.boolTable[0][1]);
 		
-		// maintenant, on va essayer de fusionner deux cases de valeur différente
-		// cas où c'est la case non fusionnée qui essaie de fusionner, valeurs diff
+		// maintenant, on va essayer de fusionner deux cases de valeur diffÃ©rente
+		// cas oÃ¹ c'est la case non fusionnÃ©e qui essaie de fusionner, valeurs diff
 		tables.intTable[1][0] = 2;
 		tables = game.mergeTile(tables, 1, 0, 0, 0);
 		
@@ -157,7 +157,7 @@ public class GameTest {
 		Assertions.assertTrue(tables.boolTable[0][0]);
 		Assertions.assertFalse(tables.boolTable[1][0]);
 		
-		// cas où c'est la case fusionnée qui essaie de fusionner, valeurs diff
+		// cas oÃ¹ c'est la case fusionnÃ©e qui essaie de fusionner, valeurs diff
 		tables = game.mergeTile(tables, 0, 0, 1, 0);
 		
 		Assertions.assertEquals(4, tables.intTable[0][0]);
@@ -165,7 +165,7 @@ public class GameTest {
 		Assertions.assertTrue(tables.boolTable[0][0]);
 		Assertions.assertFalse(tables.boolTable[1][0]);
 		
-		// cas où c'est la case non fusionnée qui essaie de fusionner, valeurs égales
+		// cas oÃ¹ c'est la case non fusionnÃ©e qui essaie de fusionner, valeurs Ã©gales
 		tables.intTable[1][0] = 4;
 		tables = game.mergeTile(tables, 1, 0, 0, 0);
 				
@@ -174,7 +174,7 @@ public class GameTest {
 		Assertions.assertTrue(tables.boolTable[0][0]);
 		Assertions.assertFalse(tables.boolTable[1][0]);
 				
-		// cas où c'est la case fusionnée qui essaie de fusionner, valeurs égales
+		// cas oÃ¹ c'est la case fusionnÃ©e qui essaie de fusionner, valeurs Ã©gales
 		tables = game.mergeTile(tables, 0, 0, 1, 0);
 				
 		Assertions.assertEquals(4, tables.intTable[0][0]);
@@ -183,5 +183,5 @@ public class GameTest {
 		Assertions.assertFalse(tables.boolTable[1][0]);
 	}
 	
-	//TODO tester les déplacements avec fusion (intégration)
+	//TODO tester les dÃ©placements avec fusion (intÃ©gration)
 }

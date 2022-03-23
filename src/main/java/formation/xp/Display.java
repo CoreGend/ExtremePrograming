@@ -1,17 +1,27 @@
 package formation.xp;
 
 
-public class Affichage {
+public class Display {
 
     public String[] empty = {"   ", "   ", "   "};
     public String[] zero = {"┏━┓", "┃ ┃"  , "┗━┛" };
-    public String[] one = {"  ┃", "  ┃", "  ┃"};
+    public String[] one = {"╻  ", "┃  ", "╹  "};
     public String[] two = {"╺━┓","┏━┛"  ,"┗━╸"  };
     public String[] three = {"╺━┓", "╺━┫" , "╺━┛"  };
-    public String[] four = {"┃ ┃", "┗━┫" , "  ┃" };
+    public String[] four = {"╻ ╻", "┗━┫" , "  ╹" };
     public String[] five = {"┏━╸","┗━┓"  ,"╺━┛"  };
     public String[] six = {"┏━╸","┣━┓"  ,"┗━┛"  };
     public String[] eight = {"┏━┓", "┣━┫" , "┗━┛" };
+    
+    private Board board;
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
 
     private String multiConcat(String str, int k){
         String output = "";
@@ -22,25 +32,27 @@ public class Affichage {
     }
 
 
-    public String tableToString(int[][] table){
+    public String tableToString(){
 
         //Ajout de la base de l'affichage
         String output = "";
-        output+=multiConcat("█", 70);
+        output+=multiConcat("█", 78);
         output += "\n";
-        output+=multiConcat("█", 70);
+        output+=multiConcat("█", 78);
         output += "\n";
 
         //Ajout des cases
         for (int i = 0; i < 4; i++){
             //Pour chaque ligne du tableau
-            output += "██";
+            output+="████                ██                ██                ██                ████\n";
             for (int k =0; k<3; k++){
+
+                output += "██";
                 //Pour chaque ligne d'affichage
                 for (int j = 0; j < 4; j++){
                     //Pour chaque colonne du tableau
                     output+="██  ";
-                    switch(table[i][j]){
+                    switch(board.getBoard()[i][j]){
 
                         case 2:
                             output+=multiConcat(" ", 5);
@@ -129,18 +141,22 @@ public class Affichage {
 
 
                     }
-                    output+="██";
+//                    output+="██";
                     if (j==3){
-                        output+="██";
+                        output+="████\n";
                     }
                 }
 
 
             }
             //On a fini une ligne du tableau
-            output+=multiConcat("█", 70);
+            output+="████                ██                ██                ██                ████\n";
+            output+=multiConcat("█", 78);
+            output+="\n";
+
         }
-        output+=multiConcat("█", 70);
+        output+=multiConcat("█", 78);
+        output+="\n";
 
         return output;
     }

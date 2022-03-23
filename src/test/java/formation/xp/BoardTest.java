@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class BoardTest {
 	/**
-	 * Vérification que la board créée n'est pas nulle
+	 * VÃ©rification que la board crÃ©Ã©e n'est pas nulle
 	 */
 	@Test
 	public void testCreation() {
@@ -15,7 +15,7 @@ public class BoardTest {
 	}
 	
 	/**
-	 * Vérification de la mise en place d'un nombre
+	 * VÃ©rification de la mise en place d'un nombre
 	 */
 	@Test
 	public void testPutNumber() {
@@ -26,7 +26,7 @@ public class BoardTest {
 	}
 	
 	/**
-	 * Vérification que la taille est bien égale à 4
+	 * VÃ©rification que la taille est bien Ã©gale Ã  4
 	 */
 	@Test
 	public void testSize() {
