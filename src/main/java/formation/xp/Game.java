@@ -36,10 +36,6 @@ public class Game {
 		String dir = null;
 		boolean change = false;
 
-
-		
-		// boolean done;
-		int count = 0;
 		do {
 			generatePiece();
 			System.out.println("");
@@ -52,9 +48,7 @@ public class Game {
 				change = move(dir);
 				System.out.println(change);
 			}while(!change);
-
-			count++;
-		}while(count < 16);
+		}while(checkMove());
 	}
 	
 	private InterTable localMoveRight(InterTable tables, int size, int i, int j) {
@@ -248,8 +242,9 @@ public class Game {
 		boolean[][] merged = tables.boolTable;
 		
 		if(!merged[x1][y1] && !merged[x2][y2] && values[x1][y1] == values[x2][y2]) {
-//			la tableau merged v�rifie si une case a d�j� �t� merged durant le tour. Si oui, elle ne peut pas merge une seconde fois.
-//			Les deux cases doivent �tre identiques
+//			la tableau merged verifie si une case a deja ete fusionnee durant le tour. 
+//			Si oui, elle ne peut pas fusionner une seconde fois.
+//			Les valeurs deux cases doivent etre identiques
 			values[x1][y1] += values[x2][y2];
 			values[x2][y2] = 0;
 			merged[x1][y1] = true;
@@ -259,4 +254,22 @@ public class Game {
 		tables.boolTable = merged;
 		return tables;
 	}
+	
+	public boolean checkMove() {
+		int[][] values = board.getBoard();
+		int size = board.getSize();
+		for(int i=0; i<size; i++) {
+			for(int j=0; j<size; j++) {
+				if (values[i][j] == 0) {
+					return true;
+				} else if (i<size-1 && values[i][j] == values[i+1][j]) {
+					return true;
+				} else if (j<size-1 && values[i][j] == values[i][j+1]) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 }

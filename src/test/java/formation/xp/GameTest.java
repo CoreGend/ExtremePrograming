@@ -183,5 +183,24 @@ public class GameTest {
 		Assertions.assertFalse(tables.boolTable[1][0]);
 	}
 	
-	//TODO tester les déplacements avec fusion (intégration)
+	public void testCheckMove() {
+		Game game = new Game();
+		game.init();
+		
+		// checkMove doit renvoyer vrai
+		Assertions.assertTrue(game.checkMove());
+		
+		// on remplit la grille
+		int size = game.getBoard().getSize();
+		for(int i=0; i<size; i++) {
+			for(int j=0; j<size; j++) {
+				game.getBoard().putNumber(i+j+1, i, j); // on s'assure que 2 pieces adjacentes ont une valeur diff�rente
+			}
+		}
+		Assertions.assertFalse(game.checkMove());
+		
+		//on rend maintenant possible une fusion
+		game.getBoard().putNumber(1, 0, 0);
+		Assertions.assertTrue(game.checkMove());
+	}
 }
