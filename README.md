@@ -19,6 +19,10 @@ Note : Pour l'affichage du jeu, il est nécessaire de configurer le terminal / l
 
 # Pratique (2048)
 
+### NOTE IMPORTANTE
+
+Pour avoir une expérience de jeu optimale, il faut que la console puisse afficher de l'UTF-8
+
 ### Backlog
 
 Id | En tant que... | Je veux... | Afin de... | Valeur | Complexité (1/2h)
