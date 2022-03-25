@@ -44,10 +44,11 @@ Id | En tant que... | Je veux... | Afin de... | Valeur | Complexité (1/2h)
 19 | Joueur | Des performances correctes | Que le jeu soit agréable à jouer | 70 | 2
 20 | Joueur | Que le jeu me récompense pour certains paliers | Me motiver à jouer davantage | 50 | 1
 21 | Joueur | Sauvegarder ma progression | Pouvoir reprendre plus tard si j'ai un haut score | 50 | 1
+22 | Joueur | Avoir un jeu agréable à regarder | Vouloir continuer à jouer | 80 | 5
 
 ### Sprint 1 
 
-User story | Temps (1/2h) | Realisé ?
+User story | Temps | Realisé ?
 --- | --- | ---
 1 | 1 | Y
 3 | 1 | Y
@@ -55,8 +56,12 @@ User story | Temps (1/2h) | Realisé ?
 5 | 1 | Y
 9 | 1 | Y
 10 | 1 | Y
-12 | 1 | En cours
 **Total** | **7**
+
+### Sprint 2
+User story | Temps | Realisé ?
+22 | 5 | Y
+12 | 1 | En cours
 
 ## Aide
 
