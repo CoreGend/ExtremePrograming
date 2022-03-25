@@ -56,13 +56,14 @@ User story | Temps | Realisé ?
 5 | 1 | Y
 9 | 1 | Y
 10 | 1 | Y
-**Total** | **7**
+**Total** | **6** | Y
 
 ### Sprint 2
 User story | Temps | Realisé ?
 --- | --- | ---
 22 | 5 | Y
 12 | 1 | En cours
+**Total** | **6** | 
 
 ## Aide
 
