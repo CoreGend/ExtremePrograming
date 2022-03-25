@@ -67,7 +67,7 @@ User story | Temps | Realisé ?
 --- | --- | ---
 22 | 5 | Y
 12 | 1 | Y
-**Total** | **6** | 
+**Total** | **6** | Y
 
 ## Aide
 
