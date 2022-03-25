@@ -60,6 +60,7 @@ User story | Temps | Realisé ?
 
 ### Sprint 2
 User story | Temps | Realisé ?
+--- | --- | ---
 22 | 5 | Y
 12 | 1 | En cours
 
