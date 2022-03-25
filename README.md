@@ -24,7 +24,7 @@ Note : Pour l'affichage du jeu, il est nécessaire de configurer le terminal / l
 Id | En tant que... | Je veux... | Afin de... | Valeur | Complexité (1/2h)
 --- | --- | --- | --- | --- | ---
 1 | Joueur | voir le terrain | choisir une action | 100 | 1
-2 | Joueur | différencier les briques facilement | me faciliter la prise de décision | 100 | 2
+2 | Joueur | différencier les briques facilement | me faciliter la prise de décision | 70 | 2
 3 | Joueur | interagir avec le jeu | avoir une expérience intéressante | 100 | 1
 4 | Joueur | pouvoir bouger mes briques | faire progresser le jeu | 100 | 1
 5 | Joueur | faire fusionner les briques | Augmenter mon score | 100 | 1
@@ -62,7 +62,7 @@ User story | Temps | Realisé ?
 User story | Temps | Realisé ?
 --- | --- | ---
 22 | 5 | Y
-12 | 1 | En cours
+12 | 1 | Y
 **Total** | **6** | 
 
 ## Aide
