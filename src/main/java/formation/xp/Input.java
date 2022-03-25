@@ -11,7 +11,7 @@ public class Input {
 		Scanner sin = new Scanner(System.in);
 		boolean done = false;
 		String res = null;
-		String[] validInputs = {"z","q","s","d","w","a"};
+		String[] validInputs = {"z","q","s","d","w","a", "quit"};
 		
 		do {
 			try {
@@ -26,6 +26,8 @@ public class Input {
 							res = "down";
 						} else if (in[0].equals("d")){
 							res = "right";
+						} else if (in[0].equals("quit")) {
+							res = "quit";
 						}
 						done = true;
 					}

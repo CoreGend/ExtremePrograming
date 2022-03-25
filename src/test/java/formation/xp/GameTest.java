@@ -1,5 +1,7 @@
 package formation.xp;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
@@ -98,6 +100,9 @@ public class GameTest {
 	@Test
 	public void testPieceGeneration() {
 		Game game = new Game();
+		List<Integer> expectedValues = new ArrayList<Integer>();
+		expectedValues.add(2);
+		expectedValues.add(4);
 		game.init();
 		
 		for(int i=0; i<4; i++) {
@@ -112,9 +117,10 @@ public class GameTest {
 		
 		Assertions.assertEquals(0, game.getBoard().getBoard()[1][2]);
 		
-		game.generatePiece();
+		int value = game.generatePiece();
 		
 		Assertions.assertNotEquals(0, game.getBoard().getBoard()[1][2]);
+		Assertions.assertTrue(expectedValues.contains(value));
 	}
 	
 	/**
